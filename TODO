@@ -1,0 +1,14 @@
+[ ] Backend
+  [X] Functions
+  [ ] Database
+  [ ] Authentication
+  [ ] Cache
+
+[ ] Frontend
+  [ ] React
+
+[ ] CI/CD
+  [ ] Github Actions
+
+# Questions
+  - In what path will the frontend hosting reside

@@ -1,0 +1,38 @@
+{
+  "name": "poor_mans_web_app_functions",
+  "description": "Poor mans web app functions",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Goamaral/poor-mans-web-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Goamaral/poor-mans-web-app/issues"
+  },
+  "homepage": "https://github.com/Goamaral/poor-mans-web-app#readme",
+  "main": "index.js",
+  "engines": {
+    "node": "16"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase-admin": "^10.0.0",
+    "firebase-functions": "^3.14.1",
+    "firebase-tools": "^9.22.0",
+    "jest": "^27.3.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  }
+}

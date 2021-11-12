@@ -1,10 +1,10 @@
 const { wrapController } = require('../utils')
 const CrudController = require('./crud')
-const { Repository: MockRepository } = require('../repositories/__mocks__/repository')
+const { resources: resourcesRepository } = require('../repositories')
 
 class ResourcesController extends CrudController {
-  constructor() {
-    super(new MockRepository())
+  constructor () {
+    super(resourcesRepository)
   }
 }
 

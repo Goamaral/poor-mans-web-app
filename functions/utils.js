@@ -7,10 +7,10 @@ const HttpError = require('./errors/http_error')
 
 module.exports = {
   // Wrap controller object method calls to catch errors and send an error response to the client
-  wrapController(target) {
+  wrapController (target) {
     return new Proxy(target, {
-      get(target, propertyKey) {
-        let originalProperty = Reflect.get(target, propertyKey).bind(target)
+      get (target, propertyKey) {
+        const originalProperty = Reflect.get(target, propertyKey).bind(target)
         let property = originalProperty
 
         // Wrap if getting a public function

@@ -1,6 +1,12 @@
 [ ] Backend
   [X] Functions
   [ ] Database
+    [ ] Setup connection to google sheets api
+    [ ] Create
+    [ ] List
+    [ ] Get
+    [ ] Update
+    [ ] Destroy
   [ ] Authentication
   [ ] Cache
 

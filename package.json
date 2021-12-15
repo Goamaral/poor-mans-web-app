@@ -15,7 +15,7 @@
     "dev": "firebase emulators:start",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --only functions,database",
+    "deploy": "firebase deploy --only functions,database,firestore",
     "logs": "firebase functions:log"
   },
   "dependencies": {

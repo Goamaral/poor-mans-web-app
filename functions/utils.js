@@ -3,7 +3,7 @@ const { logger } = require('firebase-functions')
 
 const { INTERNAL_SERVER_ERROR } = require('./codes')
 const config = require('./config')
-const HttpError = require('./errors/http_error')
+const BaseError = require('./errors/base')
 
 module.exports = {
   // Wrap controller object method calls to catch errors and send an error response to the client
@@ -20,10 +20,15 @@ module.exports = {
               await originalProperty({ req, res, next })
             } catch (err) {
               let status = INTERNAL_SERVER_ERROR
+              let caught = false
 
-              if (err instanceof HttpError) {
-                status = err.status
-              } else {
+              // Known errors
+              if (err instanceof BaseError) {
+                status = err.httpStatus
+                caught = true
+              }
+
+              if (!caught) {
                 logger.error('Uncaught', err.stack)
               }
 

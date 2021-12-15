@@ -16,8 +16,8 @@ module.exports = class CrudController {
   }
 
   // List resources
-  async list ({ res }) {
-    const resources = await this.repository.list()
+  async list ({ req, res }) {
+    const resources = await this.repository.list(req.body)
     res.status(OK).json(resources)
   }
 

@@ -4,28 +4,28 @@ class CrudModel extends BaseModel {}
 module.exports.Model = CrudModel
 
 module.exports.Repository = class CrudRepository extends BaseRepository {
-  constructor (tableName, Model = CrudModel) {
-    super(tableName, Model)
+  constructor (tableName, Model = CrudModel, Driver) {
+    super(tableName, Model, Driver)
   }
 
   async create (resource) {
-    const uuid = await this.db.create(resource)
+    const uuid = await this.table.create(resource)
     return { uuid }
   }
 
   async list (filters = {}) {
-    return await this.db.list(filters)
+    return await this.table.list(filters)
   }
 
   async get (filters = {}) {
-    return await this.db.get(filters)
+    return await this.table.get(filters)
   }
 
   async update (filters, updates) {
-    await this.db.update(filters, updates)
+    await this.table.update(filters, updates)
   }
 
   async destroy (filters) {
-    await this.db.destroy(filters)
+    await this.table.destroy(filters)
   }
 }

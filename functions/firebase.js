@@ -1,9 +1,9 @@
-const { initializeApp } = require('firebase/app')
-const { getDatabase } = require('firebase/database')
+const { initializeApp } = require('firebase-admin/app')
 
 const config = require('./config')
 
 const firebaseConfig = {
+  projectId: config.firebase.project_id,
   apiKey: config.firebase.api_key,
   authDomain: config.firebase.auth_domain,
   databaseURL: config.firebase.database_url,
@@ -12,4 +12,3 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 module.exports.app = app
-module.exports.db = getDatabase(app)

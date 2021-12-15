@@ -1,7 +1,6 @@
 const _ = require('lodash')
 
-const HttpError = require('../../errors/http_error')
-const { NOT_FOUND } = require('../../codes')
+const NotFoundError = require('../../errors/not_found')
 
 class MockModel {}
 module.exports.Model = MockModel
@@ -58,7 +57,7 @@ module.exports.Repository = class MockRepository {
   async list (filters) {
     return new Promise(resolve => {
       resolve(
-        this.MOCK_TABLE.findAll(filters).map(r => Object.assign(new MockModel(), r))
+        this.MOCK_TABLE.findAll(filters).map(r => new MockModel(r))
       )
     })
   }
@@ -68,9 +67,9 @@ module.exports.Repository = class MockRepository {
       const resource = this.MOCK_TABLE.findOne(filters)
 
       if (resource) {
-        resolve(Object.assign(new MockModel(), resource))
+        resolve(new MockModel(resource))
       } else {
-        reject(new HttpError('Not found', NOT_FOUND))
+        reject(new NotFoundError())
       }
     })
   }

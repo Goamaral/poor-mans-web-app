@@ -2,7 +2,7 @@ const { v4: uuidv4 } = require('uuid')
 const { getFirestore } = require('firebase-admin/firestore')
 const _ = require('lodash')
 
-const { NotImplementedError, NotFoundError } = require('../../errors')
+const { NotFoundError } = require('../../errors')
 const { app } = require('../../firebase')
 
 const db = getFirestore(app)
@@ -15,8 +15,7 @@ class FirebaseFirestoreDriver {
   }
 
   /* PRIVATE */
-  _where (filters) {
-    let query = this.collection
+  _where (filters, query = this.collection) {
     for (const key in filters) {
       if (_.isArray(filters[key])) {
         query = query.where(key, 'in', filters[key])
@@ -49,11 +48,17 @@ class FirebaseFirestoreDriver {
   }
 
   async update (filters, updates) {
-    throw new NotImplementedError()
+    await db.runTransaction(async t => {
+      const snapshot = await this._where(filters, t._firestore.collection(this.tableName)).get()
+      await Promise.all(snapshot.docs.map(async doc => await doc.ref.update(updates)))
+    })
   }
 
   async destroy (filters) {
-    throw new NotImplementedError()
+    await db.runTransaction(async t => {
+      const snapshot = await this._where(filters, t._firestore.collection(this.tableName)).get()
+      await Promise.all(snapshot.docs.map(async doc => await doc.ref.delete()))
+    })
   }
 }
 

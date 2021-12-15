@@ -1,11 +1,11 @@
 [ ] Backend
   [X] Functions
-  [ ] Database
+  [X] Database
     [X] Create
     [X] List
     [X] Get
-    [ ] Update
-    [ ] Destroy
+    [X] Update
+    [X] Destroy
   [ ] Authentication
   [ ] Cache
   [ ] Google sheets driver

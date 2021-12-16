@@ -7,6 +7,9 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/resources', routers.resources)
+/* Routers */
+for (const path in routers) {
+  app.use(`/${path}`, routers[path])
+}
 
 module.exports.api = https.onRequest(app)

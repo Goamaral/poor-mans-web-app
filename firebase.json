@@ -11,6 +11,7 @@
     },
     "functions": {},
     "database": {},
-    "firestore": {}
+    "firestore": {},
+    "auth": {}
   }
 }

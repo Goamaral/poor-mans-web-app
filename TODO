@@ -7,6 +7,11 @@
     [X] Update
     [X] Destroy
   [ ] Authentication
+    [X] Register
+      [X] Create user
+      [ ] Login user after register
+    [ ] Login
+    [ ] Logout
   [ ] Cache
   [ ] Google sheets driver
 
@@ -15,6 +20,11 @@
 
 [ ] CI/CD
   [ ] Github Actions
+
+[ ] Future
+  [ ] Oauth authentication - https://firebase.google.com/docs/auth/web/google-signin
+  [ ] Cancel account
+  [ ] Update user (email + password)
 
 # Questions
   - In what path will the frontend hosting reside

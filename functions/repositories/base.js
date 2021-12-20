@@ -15,8 +15,8 @@ class BaseModel {
 module.exports.Model = BaseModel
 
 class BaseRepository {
-  constructor (tableName, Model = BaseModel, Driver) {
-    this.table = new Driver(tableName, Model)
+  constructor (tableName, Model = BaseModel, DriverClass) {
+    this.table = new DriverClass(tableName, Model)
   }
 }
 module.exports.Repository = BaseRepository

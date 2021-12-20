@@ -1,7 +1,8 @@
 const { CREATED, NO_CONTENT } = require('../codes')
+const config = require('../config')
+const logger = require('../logger')
 const authService = require('../services/auth')
 const wrapController = require('./utils/wrap_controller')
-const config = require('../config')
 
 const cookieOptions = {
   httpOnly: true,
@@ -10,7 +11,7 @@ const cookieOptions = {
 }
 
 class AuthController {
-  // Register user
+  // Register
   async register ({ req, res }) {
     await authService.register({
       email: req.body.email,
@@ -22,10 +23,22 @@ class AuthController {
     res.sendStatus(CREATED)
   }
 
-  // Login user
+  // Login
   async login ({ req, res }) {
     const { user: { stsTokenManager } } = await authService.login(req.body.email, req.body.password)
     res.cookie('auth', JSON.stringify(stsTokenManager), cookieOptions)
+    res.sendStatus(NO_CONTENT)
+  }
+
+  // Logout
+  async logout ({ req, res }) {
+    try {
+      res.clearCookie('auth')
+      await authService.logout(req.userClaims.user_id)
+    } catch (err) {
+      logger.warn(err.toString())
+    }
+
     res.sendStatus(NO_CONTENT)
   }
 }

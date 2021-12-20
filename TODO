@@ -6,12 +6,13 @@
     [X] Get
     [X] Update
     [X] Destroy
-  [ ] Authentication
+  [X] Authentication
     [X] Register
       [X] Create user
       [X] Login user after register
     [X] Login
-    [ ] Logout
+    [X] Logout
+    [X] Middleware
   [ ] Cache
   [ ] Google sheets driver
 

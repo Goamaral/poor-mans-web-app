@@ -9,8 +9,8 @@
   [ ] Authentication
     [X] Register
       [X] Create user
-      [ ] Login user after register
-    [ ] Login
+      [X] Login user after register
+    [X] Login
     [ ] Logout
   [ ] Cache
   [ ] Google sheets driver

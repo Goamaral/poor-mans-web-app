@@ -1,17 +1,14 @@
 const { v4: uuidv4 } = require('uuid')
-const { getFirestore } = require('firebase-admin/firestore')
 const _ = require('lodash')
 
 const { NotFoundError } = require('../../errors')
-const { app } = require('../../firebase')
-
-const db = getFirestore(app)
+const { firestore } = require('../../firebase')
 
 class FirebaseFirestoreDriver {
   constructor (tableName, Model) {
     this.tableName = tableName
     this.Model = Model
-    this.collection = db.collection(tableName)
+    this.collection = firestore.collection(tableName)
   }
 
   /* PRIVATE */
@@ -48,14 +45,14 @@ class FirebaseFirestoreDriver {
   }
 
   async update (filters, updates) {
-    await db.runTransaction(async t => {
+    await firestore.runTransaction(async t => {
       const snapshot = await this._where(filters, t._firestore.collection(this.tableName)).get()
       await Promise.all(snapshot.docs.map(async doc => await doc.ref.update(updates)))
     })
   }
 
   async destroy (filters) {
-    await db.runTransaction(async t => {
+    await firestore.runTransaction(async t => {
       const snapshot = await this._where(filters, t._firestore.collection(this.tableName)).get()
       await Promise.all(snapshot.docs.map(async doc => await doc.ref.delete()))
     })

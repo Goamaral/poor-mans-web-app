@@ -1,10 +1,7 @@
-const { getDatabase } = require('firebase-admin/database')
 const { v4: uuidv4 } = require('uuid')
 
-const { app } = require('../../firebase')
+const { realtimeDatabase } = require('../../firebase')
 const NotImplementedError = require('../../errors/not_implemented')
-
-const db = getDatabase(app)
 
 class FirebaseRealtimeDatabaseDriver {
   constructor (tableName, Model) {
@@ -14,11 +11,11 @@ class FirebaseRealtimeDatabaseDriver {
 
   /* PRIVATE */
   async _set (uuid, value) {
-    return await db.ref(`${this.tableName}/${uuid}`).set(value)
+    return await realtimeDatabase.ref(`${this.tableName}/${uuid}`).set(value)
   }
 
   async _get (uuid) {
-    return await db.ref(`${this.tableName}/${uuid}`).get()
+    return await realtimeDatabase.ref(`${this.tableName}/${uuid}`).get()
   }
 
   /* PUBLIC */

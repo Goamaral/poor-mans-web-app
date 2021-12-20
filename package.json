@@ -19,6 +19,7 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "firebase-tools": "^9.22.0"
   },
   "devDependencies": {

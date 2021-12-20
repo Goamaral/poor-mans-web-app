@@ -45,7 +45,7 @@ module.exports = target => {
               logger.error('Uncaught', err.stack)
             }
 
-            if (config.env === 'production') {
+            if (config.isProduction) {
               res.sendStatus(status)
             } else {
               res.status(status).json({ error: err.message })

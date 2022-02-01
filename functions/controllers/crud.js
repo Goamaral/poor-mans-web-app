@@ -11,18 +11,18 @@ module.exports = class CrudController {
 
   // Create new resource with req.body
   async create ({ req, res }) {
-    const { uuid } = await this.repository.create(this._createParams(req.body))
+    const { uuid } = await this.repository.insert(this._createParams(req.body))
     res.status(CREATED).json({ uuid })
   }
 
   // List resources
-  async list ({ req, res }) {
+  async index ({ req, res }) {
     const resources = await this.repository.list(req.body)
     res.status(OK).json(resources)
   }
 
   // Get resource (uuid: req.params.uuid)
-  async get ({ req, res }) {
+  async show ({ req, res }) {
     const resource = await this.repository.get({ uuid: req.params.uuid })
     res.status(OK).json(resource)
   }

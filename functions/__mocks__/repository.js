@@ -1,6 +1,6 @@
 const _ = require('lodash')
 
-const NotFoundError = require('../../errors/not_found')
+const NotFoundError = require('../errors/not_found')
 
 class MockModel {}
 module.exports.Model = MockModel
@@ -25,11 +25,11 @@ class MockTable {
     return resource
   }
 
-  findAll (filters) {
+  list (filters) {
     return _.filter(this.rows, filters)
   }
 
-  findOne (filters) {
+  get (filters) {
     return _.find(this.rows, filters)
   }
 
@@ -47,7 +47,7 @@ module.exports.Repository = class MockRepository {
     this.MOCK_TABLE = new MockTable()
   }
 
-  async create (resource) {
+  async insert (resource) {
     return new Promise(resolve => {
       resource = this.MOCK_TABLE.insert(resource)
       resolve({ uuid: resource.uuid })

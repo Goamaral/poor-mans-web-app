@@ -8,8 +8,8 @@ module.exports.Repository = class CrudRepository extends BaseRepository {
     super(tableName, Model, Driver)
   }
 
-  async create (resource) {
-    const uuid = await this.table.create(resource)
+  async insert (resource) {
+    const uuid = await this.table.insert(resource)
     return { uuid }
   }
 

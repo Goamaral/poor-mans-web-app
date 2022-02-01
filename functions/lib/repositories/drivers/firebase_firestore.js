@@ -1,8 +1,8 @@
 const { v4: uuidv4 } = require('uuid')
 const _ = require('lodash')
 
-const { NotFoundError } = require('../../errors')
-const { firestore } = require('../../firebase')
+const { NotFoundError } = require('../../../errors')
+const { firestore } = require('../../../firebase')
 
 class FirebaseFirestoreDriver {
   constructor (tableName, Model) {
@@ -24,7 +24,7 @@ class FirebaseFirestoreDriver {
   }
 
   /* PUBLIC */
-  async create (record) {
+  async insert (record) {
     record.uuid = uuidv4()
     await this.collection.doc(record.uuid).set(record)
     return record.uuid

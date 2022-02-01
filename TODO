@@ -13,8 +13,11 @@
     [X] Login
     [X] Logout
     [X] Middleware
-  [ ] Cache
+  [X] Cache
   [ ] Google sheets driver
+  [ ] Tests
+    [ ] Unit
+    [ ] Integration
 
 [ ] Frontend
   [ ] React

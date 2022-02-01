@@ -13,10 +13,12 @@ const cookieOptions = {
 class AuthController {
   // Register
   async register ({ req, res }) {
-    await authService.register({
+    const x = await authService.register({
       email: req.body.email,
       password: req.body.password
     })
+
+    console.log('USER', x)
 
     const { user: { stsTokenManager } } = await authService.login(req.body.email, req.body.password)
     res.cookie('auth', JSON.stringify(stsTokenManager), cookieOptions)

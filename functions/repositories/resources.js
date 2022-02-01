@@ -1,5 +1,5 @@
 const { Repository: CrudRepository, Model: CrudModel } = require('./crud')
-const FirebaseFirestoreDriver = require('./drivers/firebase_firestore')
+const FirebaseFirestoreDriver = require('../lib/repositories/drivers/firebase_firestore')
 
 class Resource extends CrudModel { }
 module.exports.Model = Resource

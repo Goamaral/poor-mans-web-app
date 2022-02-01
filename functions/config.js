@@ -6,11 +6,11 @@ nconf.env('__')
 
 nconf.defaults({
   firebase: {
-    project_id: '<FIREBASE_PROJECT_ID>',
-    auth_domain: '<FIREBASE_AUTH_DOMAIN>',
+    project_id: '',
+    auth_domain: '',
     api_key: '<FIREBASE_API_KEY>',
-    database_url: '<FIREBASE_DATABASE_URL></FIREBASE_DATABASE_URL>',
-    firebase__storage_bucket: '<FIREBASE_STORAGE_BUCKET>'
+    database_url: 'http://localhost:9000/?ns=poor-mans-web-app',
+    storage_bucket: ''
   },
   cookie: {
     secret: '<COOKIE_SECRET>'

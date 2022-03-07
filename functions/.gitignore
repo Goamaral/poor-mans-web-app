@@ -3,3 +3,6 @@ secrets/*
 
 # Node #
 node_modules/
+
+# Output artifacts #
+dist/

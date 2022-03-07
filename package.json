@@ -11,20 +11,17 @@
     "node": "16"
   },
   "scripts": {
-    "lint": "standard",
-    "dev": "firebase emulators:start --import=./data --export-on-exit",
+    "dev": "npm --prefix functions run build && firebase emulators:start --import=./data --export-on-exit",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions,database,firestore",
-    "logs": "firebase functions:log",
-    "test": "jest"
+    "logs": "firebase functions:log"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "firebase-tools": "^9.22.0"
   },
   "devDependencies": {
-    "jest": "^27.3.1",
-    "standard": "^16.0.4"
+    "jest": "^27.3.1"
   }
 }
